@@ -1,1 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Special+Gothic+Expanded+One&display=swap');
 @import "tailwindcss";
+
+.font-merriweather {
+  font-family: "Merriweather", serif;
+}
+
+.font-roboto {
+  font-family: "Roboto", sans-serif;
+}
+
+.font-special-gothic {
+  font-family: "Special Gothic Expanded One", sans-serif;
+}
+
+body{
+  background-color: black;
+  color: white;
+    font-family: "Roboto", sans-serif;
+}
+/* Vertical Animations */
+@keyframes marquee-vertical {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+@keyframes reverse-marquee-vertical {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+/* Horizontal Animation (Fast) */
+@keyframes marquee-horizontal {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-vertical {
+  animation: marquee-vertical 20s linear infinite;
+}
+.animate-reverse-marquee-vertical {
+  animation: reverse-marquee-vertical 20s linear infinite;
+}
+.animate-marquee-horizontal {
+  animation: marquee-horizontal 10s linear infinite;
+  white-space: nowrap;
+  display: flex;
+  gap: 1rem;
+}
+
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+}
