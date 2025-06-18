@@ -1,7 +1,11 @@
 import type { FC, ReactElement } from "react";
 import Squares from "../../../ui/Squares/Squares";
 
-const Hero: FC = (): ReactElement => (
+interface IHero {
+  onOpenModal: (type: string) => void;
+}
+
+const Hero: FC<IHero> = ({ onOpenModal }): ReactElement => (
   <main className="relative h-screen w-full overflow-hidden bg-black text-white">
     <div className="absolute inset-0 z-0">
       <Squares
@@ -17,7 +21,8 @@ const Hero: FC = (): ReactElement => (
       <div className="mb-6 flex items-center gap-2 border border-yellow-400 bg-yellow-100/10 px-3 py-1 rounded-lg shadow hover:shadow-lg transition group">
         <div className="w-2 h-2 bg-yellow-400 rounded-full border border-yellow-600"></div>
         <p className="font-medium text-yellow-300">
-          NL2DATA: <span className="text-yellow-200">Natural Language to Data</span>
+          NL2DATA:{" "}
+          <span className="text-yellow-200">Natural Language to Data</span>
         </p>
       </div>
 
@@ -26,12 +31,15 @@ const Hero: FC = (): ReactElement => (
       </h1>
 
       <p className="text-lg sm:text-2xl text-[#AEB4C0] mt-6 max-w-2xl">
-        Create beautiful charts and dashboards from your data leveraging the power of AI.
-        Connect to your database and start visualizing in seconds.
+        Create beautiful charts and dashboards from your data leveraging the
+        power of AI. Connect to your database and start visualizing in seconds.
       </p>
 
       <div className="mt-10 flex flex-col sm:flex-row gap-4">
-        <button className="px-8 py-3 font-semibold rounded-lg text-[#0A0F1C] bg-[#21C1D6] hover:bg-[#1aa8bd] transition cursor-pointer">
+        <button
+          onClick={() => onOpenModal("signup")}
+          className="px-8 py-3 font-semibold rounded-lg text-[#0A0F1C] bg-[#21C1D6] hover:bg-[#1aa8bd] transition cursor-pointer"
+        >
           Visualize Now
         </button>
         <button className="px-8 py-3 font-semibold rounded-lg border border-[#AEB4C0] text-[#AEB4C0] hover:border-white hover:text-white transition cursor-pointer">

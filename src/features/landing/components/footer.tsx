@@ -1,7 +1,11 @@
 import type { FC, ReactElement } from "react";
 import { FaTwitter, FaGithub } from "react-icons/fa";
 
-const LandingFooter: FC = (): ReactElement => {
+interface IFooter {
+  onOpenModal: (type: string) => void;
+}
+
+const LandingFooter: FC<IFooter> = ({ onOpenModal }): ReactElement => {
   const year = new Date().getFullYear();
 
   return (
@@ -24,12 +28,12 @@ const LandingFooter: FC = (): ReactElement => {
               code needed.
             </p>
             <div className="mt-10">
-              <a
-                href="#get-started"
-                className="inline-block bg-white text-black font-bold py-3 px-8 rounded-lg text-lg hover:scale-105 hover:bg-opacity-90 transition transform duration-300 shadow-md"
+              <button
+                onClick={() => onOpenModal("signup")}
+                className="inline-block bg-white text-black font-bold py-3 px-8 rounded-lg text-lg hover:scale-105 hover:bg-opacity-90 transition transform duration-300 shadow-md cursor-pointer"
               >
                 Get Started
-              </a>
+              </button>
             </div>
           </div>
         </div>

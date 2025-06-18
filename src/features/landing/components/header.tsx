@@ -43,7 +43,7 @@ const Header: FC<IHeader> = ({ onOpenModal }): ReactElement => {
           Login
         </button>
         <button
-          onClick={() => onOpenModal("get-started")}
+          onClick={() => onOpenModal("signup")}
           className="flex gap-2 items-center border border-[#EAB308] px-6 py-2 rounded-lg transition-all duration-300 hover:border-[#FACC15] hover:bg-[#1E1E1E] group cursor-pointer"
         >
           <span className="font-display font-medium text-white group-hover:text-[#FACC15]">
