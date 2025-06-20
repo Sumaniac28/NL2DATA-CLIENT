@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import type { FC, ReactElement } from "react";
 import AppRouter from "./AppRoutes";
 import Toast from "./shared/components/Toast";
@@ -9,6 +9,9 @@ import { useLocation } from "react-router-dom";
 import { useAppSelector } from "./store";
 import type { IReduxState } from "./store/store.interface";
 import { deleteLocalStorageItem } from "./shared/utils/utils";
+
+const Sidebar = lazy(() => import("./shared/components/Sidebar"));
+const IconSidebar = lazy(() => import("./shared/components/Icon-sidebar"));
 
 interface ISidebarItem {
   activeUrl: string;
@@ -53,7 +56,6 @@ const AppContent: FC = (): ReactElement => {
       deleteLocalStorageItem("activeProject");
     };
 
-    // Add event listeners
     window.addEventListener("beforeunload", handleBeforeUnload);
     window.addEventListener("unload", handleUnload);
 
@@ -64,17 +66,20 @@ const AppContent: FC = (): ReactElement => {
   }, []);
 
   return (
-    <div className="w-screem min-h-screen flex relative overflow-hidden">
+    <div className="min-h-screen flex relative overflow-hidden">
       {hasUserData &&
         !sidebarItem.isActive &&
         sidebarItem.activeUrl !== "/" && (
-          <div className="text-white p-4">Temporary Full Sidebar Text</div>
+          <Suspense>
+            <Sidebar />
+          </Suspense>
         )}
-
       {hasUserData && sidebarItem.isActive && sidebarItem.activeUrl !== "/" && (
-        <div className="text-white p-4">Temporary Icon Sidebar Text</div>
+        <Suspense>
+          {" "}
+          <IconSidebar />
+        </Suspense>
       )}
-
       <div className="w-full">
         <AppRouter />
         <Toast toasts={toasts} />

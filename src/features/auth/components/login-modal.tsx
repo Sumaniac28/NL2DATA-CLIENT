@@ -13,6 +13,7 @@ import {
 } from "../../../shared/utils/utils";
 import { FaTimes } from "react-icons/fa";
 import { ToastService } from "../../../shared/services/toast.service";
+import { addDataSource } from "../../datasources/reducers/datasource.reducer";
 
 interface IAuthPayload {
   email: string;
@@ -29,8 +30,8 @@ const LoginModal: FC<{
   });
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const [loginUser, { loading }] = useMutation(LOGIN_USER);
   const toastService: ToastService = new ToastService();
+  const [loginUser, { loading }] = useMutation(LOGIN_USER);
 
   const onSubmit = async (event: FormEvent): Promise<void> => {
     event.preventDefault();
@@ -52,6 +53,17 @@ const LoginModal: FC<{
           (activeProject === "undefined" && projectIds.length > 0)
         ) {
           setLocalStorageItem("activeProject", JSON.stringify(projectIds[0]));
+        }
+        if (activeProject !== "undefined" && activeProject !== null) {
+          dispatch(
+            addDataSource({
+              active: activeProject ? activeProject : projectIds[0],
+              database: activeProject
+                ? activeProject.database
+                : projectIds[0].database,
+              dataSource: projectIds,
+            })
+          );
         }
         navigate("/dashboard");
       }

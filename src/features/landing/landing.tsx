@@ -1,5 +1,5 @@
 import type { FC, ReactElement } from "react";
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import Header from "./components/header";
 import Hero from "./components/hero";
 import Features from "./components/features";
@@ -8,8 +8,9 @@ import LandingCTA from "./components/landing-cta";
 import LandingFooter from "./components/footer";
 import SplashCursor from "../../ui/SplashCursor/SplashCursor";
 import FAQ from "./components/FAQ";
-import LoginModal from "../auth/components/login-modal";
-import SignupModal from "../auth/components/signup-modal";
+
+const LoginModal = lazy(() => import("../auth/components/login-modal"));
+const SignupModal = lazy(() => import("../auth/components/signup-modal"));
 
 interface LandingType {
   showLoginModal: boolean;
@@ -33,16 +34,20 @@ const Landing: FC = (): ReactElement => {
   return (
     <>
       {modal.showLoginModal && (
-        <LoginModal
-          onClose={() => setModal({ ...modal, showLoginModal: false })}
-          onOpenModal={onOpenModal}
-        />
+        <Suspense>
+          <LoginModal
+            onClose={() => setModal({ ...modal, showLoginModal: false })}
+            onOpenModal={onOpenModal}
+          />
+        </Suspense>
       )}
       {modal.showSignupModal && (
-        <SignupModal
-          onClose={() => setModal({ ...modal, showSignupModal: false })}
-          onOpenModal={onOpenModal}
-        />
+        <Suspense>
+          <SignupModal
+            onClose={() => setModal({ ...modal, showSignupModal: false })}
+            onOpenModal={onOpenModal}
+          />
+        </Suspense>
       )}
       <div className="min-h-screen flex flex-col">
         <Header onOpenModal={onOpenModal} />
@@ -52,7 +57,7 @@ const Landing: FC = (): ReactElement => {
         <Testimonials />
         <FAQ />
         <LandingFooter onOpenModal={onOpenModal} />
-        <SplashCursor />
+        {/* <SplashCursor /> */}
       </div>
     </>
   );

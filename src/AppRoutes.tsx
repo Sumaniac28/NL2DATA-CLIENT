@@ -1,7 +1,16 @@
-import { Suspense, type FC } from "react";
+import { lazy, Suspense, type FC, type LazyExoticComponent } from "react";
 import { useRoutes, type RouteObject } from "react-router-dom";
-import Landing from "./features/landing/landing";
-import Dashboard from "./features/dashboard/Dashboard";
+import ProtectedRoute from "./ProtectedRoute";
+
+const Landing: LazyExoticComponent<FC> = lazy(
+  () => import("./features/landing/landing")
+);
+const Dashboard: LazyExoticComponent<FC> = lazy(
+  () => import("./features/dashboard/Dashboard")
+);
+const Datasource: LazyExoticComponent<FC> = lazy(
+  () => import("./features/datasources/Datasources")
+);
 
 const AppRouter: FC = () => {
   const routes: RouteObject[] = [
@@ -17,7 +26,19 @@ const AppRouter: FC = () => {
       path: "/dashboard",
       element: (
         <Suspense>
-          <Dashboard />
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        </Suspense>
+      ),
+    },
+    {
+      path: "/datasources",
+      element: (
+        <Suspense>
+          <ProtectedRoute>
+            <Datasource />
+          </ProtectedRoute>
         </Suspense>
       ),
     },
