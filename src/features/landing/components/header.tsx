@@ -14,12 +14,11 @@ const Header: FC<IHeader> = ({ onOpenModal }): ReactElement => {
   return (
     <nav className="p-3 flex justify-between items-center fixed top-0 left-0 right-0 z-20 shadow-md bg-[#000000] text-[#AEB4C0]">
       <a href="#" className="flex gap-2 items-center flex-1">
-        <span className="text-lg font-medium font-display text-[#FFFFFF]">
+        <span className="font-orbitron text-lg font-medium font-display text-[#FFFFFF]">
           NL2DATA
         </span>
       </a>
 
-      {/* Center Nav Links */}
       <div className="hidden lg:flex gap-12">
         {["Features", "How It Works", "Testimonials", "FAQ", "Contact"].map(
           (item) => (
@@ -34,7 +33,6 @@ const Header: FC<IHeader> = ({ onOpenModal }): ReactElement => {
         )}
       </div>
 
-      {/* Right Side Buttons - Desktop */}
       <div className="hidden lg:flex flex-1 justify-end gap-4">
         <button
           onClick={() => onOpenModal("login")}
@@ -53,12 +51,10 @@ const Header: FC<IHeader> = ({ onOpenModal }): ReactElement => {
         </button>
       </div>
 
-      {/* Mobile Hamburger */}
       <button className="p-2 lg:hidden" onClick={toggleMenu}>
         <i className="fa-solid fa-bars text-[#FFFFFF]"></i>
       </button>
 
-      {/* Mobile Menu */}
       {menuOpen && (
         <div className="fixed z-10 md:hidden bg-[#000000] inset-0 p-3">
           <div className="flex justify-between items-center">

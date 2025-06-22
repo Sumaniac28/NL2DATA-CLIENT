@@ -1,6 +1,7 @@
+import type { IUser } from "../../../shared/interfaces/user.interface";
+
 export interface IReduxAuthPayload {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  authInfo?: any;
+  authInfo?: IUser;
 }
 
 export interface IReduxAuthPayload {

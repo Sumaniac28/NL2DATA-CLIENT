@@ -120,7 +120,7 @@ const SignupModal: FC<{
           <button
             type="submit"
             disabled={!userInfo.email || !userInfo.password}
-            className={`w-full py-2 px-4 rounded-md font-semibold transition-colors ${
+            className={`w-full py-2 px-4 rounded-md font-semibold transition-colors cursor-pointer ${
               !userInfo.email || !userInfo.password
                 ? "bg-[#1AA8BD]/40 text-black cursor-not-allowed"
                 : "bg-[#21C1D6] text-black hover:bg-[#1AA8BD] cursor-pointer"

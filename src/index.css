@@ -1,8 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Special+Gothic+Expanded+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Special+Gothic+Expanded+One&display=swap");
 @import "tailwindcss";
 
 .font-merriweather {
   font-family: "Merriweather", serif;
+}
+
+.font-orbitron {
+  font-family: "Orbitron", sans-serif;
 }
 
 .font-roboto {
@@ -13,10 +17,10 @@
   font-family: "Special Gothic Expanded One", sans-serif;
 }
 
-body{
+body {
   background-color: black;
   color: white;
-    font-family: "Roboto", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 /* Vertical Animations */
 @keyframes marquee-vertical {
@@ -60,7 +64,8 @@ body{
 }
 
 @keyframes gradient {
-  0%, 100% {
+  0%,
+  100% {
     background-position: 0% 50%;
   }
   50% {
@@ -71,4 +76,18 @@ body{
 .animate-gradient {
   background-size: 400% 400%;
   animation: gradient 10s ease infinite;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #1d1f1f;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(33, 193, 214, 0.3); 
+  border-radius: 4px;
 }

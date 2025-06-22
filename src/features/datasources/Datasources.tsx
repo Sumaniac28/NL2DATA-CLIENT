@@ -87,11 +87,11 @@ const Datasource: FC = (): ReactElement => {
   }, []);
 
   return (
-    <div className="px-4 py-4 sm:px-6 md:px-8 lg:px-12">
+    <div className="min-h-full bg-[#161717] px-4 py-4 sm:px-6 md:px-8 lg:px-12">
       <div className="sm:mb-2 rounded-xl p-4 sm:p-6 md:p-8 shadow-sm backdrop-blur-sm">
         <div className="flex flex-col gap-6 sm:flex-row sm:justify-between sm:items-center">
           <div>
-            <h1 className="font-merriweather text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight leading-tight sm:leading-snug text-white">
+            <h1 className="font-orbitron text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight leading-tight sm:leading-snug text-white">
               Data Sources
             </h1>
             <p className="mt-2 text-sm sm:text-base text-[#AEB4C0]">
@@ -102,7 +102,7 @@ const Datasource: FC = (): ReactElement => {
           <div className="w-full sm:w-auto">
             <button
               onClick={showAddModal}
-              className="w-full sm:w-auto bg-[#21C1D6] text-white px-4 py-2 sm:px-6 sm:py-3 rounded-xl hover:bg-[#1AA8BD] flex items-center justify-center sm:justify-start gap-2 sm:gap-3 shadow-lg hover:scale-[1.02] active:scale-95 transition-all duration-200 text-sm sm:text-base font-semibold"
+              className="w-full sm:w-auto bg-[#21C1D6] text-white px-4 py-2 sm:px-6 sm:py-3 rounded-xl hover:bg-[#1AA8BD] flex items-center justify-center sm:justify-start gap-2 sm:gap-3 shadow-lg hover:scale-[1.02] active:scale-95 transition-all duration-200 text-sm sm:text-base font-semibold cursor-pointer"
             >
               <i className="fa fa-plus text-white text-base sm:text-lg drop-shadow-sm"></i>
               Add Data Source

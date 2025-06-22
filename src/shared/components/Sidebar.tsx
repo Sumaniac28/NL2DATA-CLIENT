@@ -50,7 +50,7 @@ const Sidebar: FC = (): ReactElement => {
       <div className="p-4 flex justify-between items-center">
         <h2
           className={clsx(
-            "text-xl font-merriweather font-semibold tracking-wide text-white transition-all duration-300",
+            "text-xl font-orbitron font-semibold tracking-wide text-white transition-all duration-300",
             {
               "opacity-0 w-0": isCollapsed,
               "opacity-100": !isCollapsed,
@@ -68,7 +68,7 @@ const Sidebar: FC = (): ReactElement => {
             }
           )}
         >
-          <Menu className="h-6 w-6" />
+          <Menu className="h-6 w-6 cursor-pointer" />
         </button>
       </div>
 
