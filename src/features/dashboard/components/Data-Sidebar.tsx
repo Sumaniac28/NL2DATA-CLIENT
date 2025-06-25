@@ -17,7 +17,6 @@ import { addDataSource } from "../../datasources/reducers/datasource.reducer";
 import { addCollections } from "../reducers/collections.reducer";
 import { addDocuments, clearDocuments } from "../reducers/documents.reducer";
 import { getLocalStorageItem } from "../../../shared/utils/utils";
-import AddDatasource from "../../datasources/components/Add-Datasource";
 import { eventBus } from "../../../shared/events";
 import { EventType } from "../../../shared/events/types";
 
@@ -28,14 +27,21 @@ const DEFAULT_PROJECT: IDatasource = {
   database: "",
 };
 
-const DataSourceSidebar: FC = (): ReactElement => {
+interface DataSourceSidebarProps {
+  setIsAddModal: (value: boolean) => void;
+  setIsOpen?: (value: boolean) => void;
+}
+
+const DataSourceSidebar: FC<DataSourceSidebarProps> = ({
+  setIsAddModal,
+  setIsOpen,
+}): ReactElement => {
   const rootDatasource = useAppSelector(
     (state: IReduxState) => state.datasource
   );
   const dispatch = useAppDispatch();
   const [tables, setTables] = useState<string[]>([]);
   const [dropdownOptions, setDropdownOptions] = useState<DropdownOption[]>([]);
-  const [isAddModal, setIsAddModal] = useState<boolean>(false);
   const [defaultProject, setDefaultProject] = useState<DropdownOption | null>(
     null
   );
@@ -55,6 +61,9 @@ const DataSourceSidebar: FC = (): ReactElement => {
 
   const handleAddDataSource = (): void => {
     setIsAddModal(true);
+    if (setIsOpen) {
+      setIsOpen(false);
+    }
   };
 
   const loadDatasources = useCallback(() => {
@@ -166,11 +175,10 @@ const DataSourceSidebar: FC = (): ReactElement => {
         console.log("CLOSE_DATASOURCE_MODAL event unsubscribed");
       });
     };
-  }, [loadDatasources, setDefaultDropdownProject]);
+  }, [loadDatasources, setIsAddModal, setDefaultDropdownProject]);
 
   return (
     <>
-      {isAddModal && <AddDatasource />}
       <aside className="h-screen w-72 bg-[#1d1f1f] border-l border-[#4dbccd] shadow-xl flex-shrink-0 transition-all duration-300 ease-in-out">
         <div className="px-5 py-4">
           <div className="flex justify-between items-center">
