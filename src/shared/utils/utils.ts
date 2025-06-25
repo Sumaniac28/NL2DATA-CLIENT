@@ -15,3 +15,13 @@ export const getLocalStorageItem = (key: string) => {
 export const deleteLocalStorageItem = (key: string) => {
   window.localStorage.removeItem(key);
 };
+
+export const truncateText = (
+  text: string | number,
+  maxLength: number
+): string => {
+  if (typeof text === "number") return text.toString();
+  if (!text) return "";
+  if (text.length <= maxLength) return text;
+  return text.slice(0, maxLength - 3) + "...";
+};

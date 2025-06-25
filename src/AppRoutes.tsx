@@ -12,6 +12,14 @@ const Datasource: LazyExoticComponent<FC> = lazy(
   () => import("./features/datasources/Datasources")
 );
 
+const Charts: LazyExoticComponent<FC> = lazy(
+  () => import("./features/charts/Charts")
+);
+
+const ChartCreation: LazyExoticComponent<FC> = lazy(
+  () => import("./features/charts/Chart-Creation")
+);
+
 const AppRouter: FC = () => {
   const routes: RouteObject[] = [
     {
@@ -38,6 +46,36 @@ const AppRouter: FC = () => {
         <Suspense>
           <ProtectedRoute>
             <Datasource />
+          </ProtectedRoute>
+        </Suspense>
+      ),
+    },
+    {
+      path: "/charts",
+      element: (
+        <Suspense>
+          <ProtectedRoute>
+            <Charts />
+          </ProtectedRoute>
+        </Suspense>
+      ),
+    },
+    {
+      path: "/charts/create",
+      element: (
+        <Suspense>
+          <ProtectedRoute>
+            <ChartCreation />
+          </ProtectedRoute>
+        </Suspense>
+      ),
+    },
+    {
+      path: "/charts/edit/:chartId",
+      element: (
+        <Suspense>
+          <ProtectedRoute>
+            <ChartCreation />
           </ProtectedRoute>
         </Suspense>
       ),

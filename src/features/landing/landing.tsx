@@ -1,5 +1,6 @@
 import type { FC, ReactElement } from "react";
 import { lazy, Suspense, useState } from "react";
+import { isMobile } from "react-device-detect";
 import Header from "./components/header";
 import Hero from "./components/hero";
 import Features from "./components/features";
@@ -11,6 +12,7 @@ import FAQ from "./components/FAQ";
 
 const LoginModal = lazy(() => import("../auth/components/login-modal"));
 const SignupModal = lazy(() => import("../auth/components/signup-modal"));
+const MobileBlock = lazy(() => import("../../shared/components/Mobile-Block"));
 
 interface LandingType {
   showLoginModal: boolean;
@@ -22,8 +24,13 @@ const Landing: FC = (): ReactElement => {
     showLoginModal: false,
     showSignupModal: false,
   });
+  const [showMobileBlock, setShowMobileBlock] = useState(false);
 
   const onOpenModal = (type: string): void => {
+    if (isMobile) {
+      setShowMobileBlock(true);
+      return;
+    }
     if (type === "login") {
       setModal({ showLoginModal: true, showSignupModal: false });
     } else {
@@ -33,6 +40,12 @@ const Landing: FC = (): ReactElement => {
 
   return (
     <>
+      {showMobileBlock && (
+        <Suspense>
+          <MobileBlock onClose={() => setShowMobileBlock(false)} />
+        </Suspense>
+      )}
+
       {modal.showLoginModal && (
         <Suspense>
           <LoginModal
