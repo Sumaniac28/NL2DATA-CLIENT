@@ -1,14 +1,15 @@
 import type { FC, ReactElement } from "react";
 import { lazy, Suspense, useState } from "react";
+import { motion } from "framer-motion";
 import { isMobile } from "react-device-detect";
 import Header from "./components/header";
 import Hero from "./components/hero";
 import Features from "./components/features";
 import Testimonials from "./components/testimonials";
-import LandingCTA from "./components/landing-cta";
 import LandingFooter from "./components/footer";
 import SplashCursor from "../../ui/SplashCursor/SplashCursor";
 import FAQ from "./components/FAQ";
+import HowItWorks from "./components/landing-cta";
 
 const LoginModal = lazy(() => import("../auth/components/login-modal"));
 const SignupModal = lazy(() => import("../auth/components/signup-modal"));
@@ -62,16 +63,56 @@ const Landing: FC = (): ReactElement => {
           />
         </Suspense>
       )}
-      <div className="min-h-screen flex flex-col">
+      <div className="min-h-screen flex flex-col scroll-smooth">
         <Header onOpenModal={onOpenModal} />
         <Hero onOpenModal={onOpenModal} />
-        <Features />
-        <LandingCTA />
-        <Testimonials />
-        <FAQ />
-        <LandingFooter onOpenModal={onOpenModal} />
-        {/* <SplashCursor /> */}
+
+        <motion.div
+          id="features"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+        >
+          <Features />
+        </motion.div>
+
+        <motion.div
+          id="how-it-works"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+        >
+          <HowItWorks />
+        </motion.div>
+
+        <motion.div
+          id="testimonials"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+        >
+          <Testimonials />
+        </motion.div>
+
+        <motion.div
+          id="faq"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+        >
+          <FAQ />
+        </motion.div>
+
+        <motion.div
+          id="footer"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+        >
+          <LandingFooter onOpenModal={onOpenModal} />
+        </motion.div>
       </div>
+      {/* <SplashCursor /> */}
     </>
   );
 };

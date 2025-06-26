@@ -20,7 +20,7 @@ const LandingFooter: FC<IFooter> = ({ onOpenModal }): ReactElement => {
           </div>
 
           <div className="relative z-10 px-8 py-24 text-center text-white">
-            <h2 className="font-merriweather text-5xl sm:text-6xl font-extrabold drop-shadow-lg">
+            <h2 className="font-orbitron text-4xl sm:text-5xl font-extrabold drop-shadow-lg">
               Ready to unleash your inner data wizard?
             </h2>
             <p className="mt-6 text-xl text-white/90 max-w-2xl mx-auto">
@@ -41,14 +41,21 @@ const LandingFooter: FC<IFooter> = ({ onOpenModal }): ReactElement => {
         <div className="border-t border-yellow-400 pt-8 mb-5 md:flex md:items-center md:justify-between">
           <div className="flex justify-center md:justify-end space-x-6 md:order-2">
             <a
-              href="#"
+              href="https://www.linkedin.com/in/sumit-grover-28/"
+              aria-label="LinkedIn"
+              className="text-secondary hover:text-white transition text-xl"
+            >
+              <i className="fa-brands fa-linkedin" />
+            </a>
+            <a
+              href="https://x.com/_Sumaniac"
               aria-label="Twitter"
               className="text-secondary hover:text-white transition text-xl"
             >
               <FaTwitter />
             </a>
             <a
-              href="#"
+              href="https://github.com/Sumaniac28"
               aria-label="GitHub"
               className="text-secondary hover:text-white transition text-xl"
             >
@@ -58,6 +65,7 @@ const LandingFooter: FC<IFooter> = ({ onOpenModal }): ReactElement => {
           <p className="mt-8 text-center text-sm text-secondary md:mt-0 md:order-1">
             &copy; {year} NL2DATA, Inc. All rights reserved.
           </p>
+          <p className="mt-8 text-center text-sm text-secondary md:mt-0 md:order-1">Made with ❤️ by Sumit Grover</p>
         </div>
       </div>
     </footer>

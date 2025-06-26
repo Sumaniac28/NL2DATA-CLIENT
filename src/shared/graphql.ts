@@ -7,7 +7,7 @@ import {
 
 import type { NormalizedCacheObject } from "@apollo/client/core";
 
-const httpUrl: string = 'http://localhost:5000/graphql';
+const httpUrl: string = import.meta.env.VITE_BASE_ENDPOINT;
 
 const httpLink: ApolloLink = createHttpLink({
   uri: httpUrl,
@@ -21,7 +21,7 @@ const cache: InMemoryCache = new InMemoryCache({
 const apolloClient: ApolloClient<NormalizedCacheObject> = new ApolloClient({
   link: httpLink,
   cache,
-  connectToDevTools: true, // turn false in production
+  connectToDevTools: import.meta.env.VITE_ENVIRONMENT === "development",
 });
 
 export { apolloClient };

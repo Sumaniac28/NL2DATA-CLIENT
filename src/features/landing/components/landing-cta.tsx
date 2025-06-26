@@ -1,6 +1,7 @@
 import type { FC, ReactElement } from "react";
+import HIW from "../../../assets/HIW.png";
 
-const LandingCTA: FC = (): ReactElement => (
+const HowItWorks: FC = (): ReactElement => (
   <section className="flex flex-col lg:flex-row items-stretch bg-black text-[#AEB4C0]">
     <div className="flex flex-col gap-y-8 p-4 lg:w-1/2">
       <h2 className="font-merriweather text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
@@ -37,12 +38,12 @@ const LandingCTA: FC = (): ReactElement => (
 
     <div className="w-full lg:w-1/2 h-64 lg:h-auto">
       <img
-        src="https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2020/11/Apple-MacBook-in-dark-room.jpg?q=70&fit=contain&w=1200&h=628&dpr=1"
-        alt="ToDesktop screenshot"
+        src={HIW}
+        alt="How It Works"
         className="w-full h-full object-cover"
       />
     </div>
   </section>
 );
 
-export default LandingCTA;
+export default HowItWorks;

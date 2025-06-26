@@ -7,9 +7,25 @@ interface IHeader {
 const Header: FC<IHeader> = ({ onOpenModal }): ReactElement => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setMenuOpen((prev) => !prev);
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
+
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    const yOffset = -80;
+    if (section) {
+      const y = section.getBoundingClientRect().top + window.scrollY + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+      setMenuOpen(false);
+    }
   };
+
+  const links = [
+    { label: "Features", id: "features" },
+    { label: "How It Works", id: "how-it-works" },
+    { label: "Testimonials", id: "testimonials" },
+    { label: "FAQ", id: "faq" },
+    { label: "Contact", id: "footer" },
+  ];
 
   return (
     <nav className="p-3 flex justify-between items-center fixed top-0 left-0 right-0 z-20 shadow-md bg-[#000000] text-[#AEB4C0]">
@@ -20,17 +36,15 @@ const Header: FC<IHeader> = ({ onOpenModal }): ReactElement => {
       </a>
 
       <div className="hidden lg:flex gap-12">
-        {["Features", "How It Works", "Testimonials", "FAQ", "Contact"].map(
-          (item) => (
-            <a
-              key={item}
-              href="#"
-              className="font-medium hover:text-[#21C1D6] transition-colors duration-200"
-            >
-              {item}
-            </a>
-          )
-        )}
+        {links.map(({ label, id }) => (
+          <button
+            key={label}
+            onClick={() => scrollToSection(id)}
+            className="font-medium hover:text-[#21C1D6] transition-colors duration-200"
+          >
+            {label}
+          </button>
+        ))}
       </div>
 
       <div className="hidden lg:flex flex-1 justify-end gap-4">
@@ -69,17 +83,15 @@ const Header: FC<IHeader> = ({ onOpenModal }): ReactElement => {
           </div>
 
           <div className="mt-6">
-            {["Features", "How it works", "Testimonials", "FAQ", "Contact"].map(
-              (item) => (
-                <a
-                  key={item}
-                  href="#"
-                  className="font-medium m-3 p-3 block rounded-lg text-[#AEB4C0] hover:text-[#21C1D6] hover:bg-[#1AA8BD] transition-all duration-200"
-                >
-                  {item}
-                </a>
-              )
-            )}
+            {links.map(({ label, id }) => (
+              <button
+                key={label}
+                onClick={() => scrollToSection(id)}
+                className="font-medium m-3 p-3 block rounded-lg text-[#AEB4C0] hover:text-[#21C1D6] hover:bg-[#1AA8BD] transition-all duration-200"
+              >
+                {label}
+              </button>
+            ))}
 
             <button
               onClick={() => {
