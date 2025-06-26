@@ -7,7 +7,6 @@ import Hero from "./components/hero";
 import Features from "./components/features";
 import Testimonials from "./components/testimonials";
 import LandingFooter from "./components/footer";
-import SplashCursor from "../../ui/SplashCursor/SplashCursor";
 import FAQ from "./components/FAQ";
 import HowItWorks from "./components/landing-cta";
 
@@ -112,7 +111,6 @@ const Landing: FC = (): ReactElement => {
           <LandingFooter onOpenModal={onOpenModal} />
         </motion.div>
       </div>
-      {/* <SplashCursor /> */}
     </>
   );
 };
