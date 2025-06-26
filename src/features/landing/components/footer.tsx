@@ -41,7 +41,7 @@ const LandingFooter: FC<IFooter> = ({ onOpenModal }): ReactElement => {
         <div className="border-t border-yellow-400 pt-8 mb-5 md:flex md:items-center md:justify-between">
           <div className="flex justify-center md:justify-end space-x-6 md:order-2">
             <a
-              href="https://www.linkedin.com/in/sumit-grover-28/"
+              href="https://www.linkedin.com/in/sumit-grover-29a277256/"
               aria-label="LinkedIn"
               className="text-secondary hover:text-white transition text-xl"
             >

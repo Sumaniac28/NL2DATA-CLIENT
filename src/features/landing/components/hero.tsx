@@ -42,9 +42,14 @@ const Hero: FC<IHero> = ({ onOpenModal }): ReactElement => (
         >
           Visualize Now
         </button>
-        <button className="px-8 py-3 font-semibold rounded-lg border border-[#AEB4C0] text-[#AEB4C0] hover:border-white hover:text-white transition cursor-pointer">
+        <a
+          href="https://dev.to/sumaniac28/nl2data-3dh7"
+          target="_blank"
+          rel="noopener"
+          className="px-8 py-3 font-semibold rounded-lg border border-[#AEB4C0] text-[#AEB4C0] hover:border-white hover:text-white transition cursor-pointer"
+        >
           Learn more
-        </button>
+        </a>
       </div>
     </section>
   </main>
